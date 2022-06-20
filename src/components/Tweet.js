@@ -1,39 +1,26 @@
-function Tweet() {
+import ProfileImage from "/Users/benedictecoulon/ironhack/labs/lab-react-tweets/src/components/ProfileImage.js";
+import User from "/Users/benedictecoulon/ironhack/labs/lab-react-tweets/src/components/User.js";
+import Timestamp from "/Users/benedictecoulon/ironhack/labs/lab-react-tweets/src/components/Timestamp.js";
+import Message from "/Users/benedictecoulon/ironhack/labs/lab-react-tweets/src/components/Message.js";
+import Actions from "/Users/benedictecoulon/ironhack/labs/lab-react-tweets/src/components/Actions.js";
+
+function Tweet(prosp) {
   return (
     <div className="tweet">
-      <img
-        src="https://i.imgur.com/9yw1Fyw.jpg"
-        className="profile"
-        alt="profile"
-      />
+      <ProfileImage image={prosp.tweet.user.image} />
 
       <div className="body">
         <div className="top">
-          <span className="user">
-            <span className="name">Ironhack</span>
-            <span className="handle">@ironhack</span>
-          </span>
-
-          <span className="timestamp">Nov 30, 2020</span>
+          <User userData={prosp.tweet.user} />
+          <Timestamp time={prosp.tweet.timestamp} />
         </div>
 
-        <p className="message">
-          On December 7th, we will be hosting a #webinar that will introduce you
-          to #SQL! Are you ready? 🚀
-        </p>
-
-        <div className="actions">
-          {/* Font Awesome icons */}
-          <i class="far fa-comment"></i>
-          <i class="fas fa-retweet"></i>
-          <i class="far fa-heart"></i>
-          <i class="fas fa-share"></i>
-        </div>
+        <Message message={prosp.tweet.message} />
+        <Actions />
       </div>
 
       <i class="fas fa-ellipsis-h"></i>
     </div>
   );
 }
-
 export default Tweet;
